@@ -998,6 +998,25 @@ body {
 
 h1 {
 	@include font_rafi_priority;
+	font-size: 36px;
+}
+
+p {
+	font-size: 14px;
+}
+
+button {
+	background: $action;
+	color: $white-off;
+	@include font_cinzen_priority;
+	border: none;
+	padding: 10px 60px;
+	cursor: pointer;
+	border-radius: 25px;
+	height: 50px;
+	&:hover {
+		color: #fff;
+	}
 }
 
 .background-image {
@@ -1018,6 +1037,7 @@ h1 {
 
 
 .site-header {
+	$logo_pad: 75px;
 	.site-header__wrapper {
 		.site-header__wrapper--inner {
 			max-height: 200px;
@@ -1031,7 +1051,7 @@ h1 {
 				max-height: 100%;
 				display: flex;
 				align-items: center;
-				padding: 0 50px;
+				padding: 0 $logo_pad;
 				.site-title {
 					display: none;
 				}
@@ -1075,10 +1095,10 @@ h1 {
 				} 
 			}
 			.site-search {
-				padding: 0 50px;
+				padding: 0 $logo_pad;
 				img {
-					height: 50px;
-					width: 50px;
+					max-height: 50px;
+					max-width: 50px;
 					object-fit: contain;
 				}
 			}
@@ -1086,6 +1106,64 @@ h1 {
 	}
 }
 
+body {
+	// position: relative;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.site.home {
+	// border: 1px dashed tomato;
+	// padding: 0 50px;
+	align-self: center;
+	width: 70vw;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	.site-main {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		.intro {
+			width: 40vw;
+			p {
+				margin: 40px 0;
+			}
+		}
+		.home-cta {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			.home-cta--inner {
+				width: 60vw;
+				display: flex;
+				justify-content: center;
+				border-radius: 20px 20px 0 0;
+				// background: #D6D6D6;
+				// filter: blur(1px);
+				// opacity: .3;
+				// @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+					-webkit-backdrop-filter: blur(10px);
+					backdrop-filter: blur(10px);
+					background-color: rgba(255, 255, 255, 0.1);  
+				// }
+				p {
+					margin: 0;
+					padding: 10px 0;
+					a {
+						color: $gray-light;
+						text-decoration: none;
+
+					}
+				}
+			}
+		}
+	}
+}
 
 
 .noshow {

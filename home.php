@@ -59,7 +59,7 @@
 
 	<main id="primary" class="site-main">
 	
-		<div>
+		<div class='intro'>
 			<h1>
 				<?php #echo the_title(); ?>
 				Dedicated bookstore for serious readers
@@ -71,6 +71,16 @@
 				View Books
 				<i class='fa fa-arrow-right'></i>
 			</button>
+		</div>
+
+		<div class='home-cta'>
+			<div class="home-cta--inner">
+				<p class=''>
+					<a href="/">
+						View Locations and Read the Visitor Guidlines <i class="fa fa-map"></i>
+					</a>
+				</p>
+			</div>
 		</div>
 
 	</main>
