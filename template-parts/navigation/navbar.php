@@ -70,11 +70,14 @@
         </nav><!-- #site-navigation -->
         
         <div class='site-search'>
-          <div class="site-search--inner">
-            <img src="/wp-content/uploads/2020/09/cropped-redux-logo.png" alt="search bar">
-          </div>
+          <button class="site-search--inner" title='search the site'>
+            <!-- <img src="/wp-content/uploads/2020/09/cropped-redux-logo.png" alt="search bar"> -->
+            <img src="/wp-content/uploads/2020/10/icon_search.png" alt="search bar">
+          </button>
         </div>
 
 			</div><!-- .site-header__wrapper--inner -->
 		</div><!-- .site-header__wrapper -->
-	</header><!-- #masthead -->
+  </header><!-- #masthead -->
+  
+  <img src="https://cdn.pixabay.com/photo/2018/03/19/18/20/tea-time-3240766_1280.jpg" alt="" class="background-image">

@@ -31,7 +31,7 @@
 <div data-firinn='home.php'></div>
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'firinn' ); ?></a>
 
-	<img src="https://cdn.pixabay.com/photo/2018/03/19/18/20/tea-time-3240766_1280.jpg" alt="" class="background-image">
+	<!-- <img src="https://cdn.pixabay.com/photo/2018/03/19/18/20/tea-time-3240766_1280.jpg" alt="" class="background-image"> -->
 
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
@@ -77,7 +77,7 @@
 			<div class="home-cta--inner">
 				<p class=''>
 					<a href="/">
-						View Locations and Read the Visitor Guidlines <i class="fa fa-map"></i>
+						View Locations and read the Visitor Guidlines <i class="fa fa-map"></i>
 					</a>
 				</p>
 			</div>
@@ -86,5 +86,6 @@
 	</main>
 
 	<?php 
+		get_sidebar();
 		get_footer();
 	?>
