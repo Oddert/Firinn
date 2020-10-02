@@ -177,6 +177,7 @@ aside.widget-area .menu .menu-item .menu-image{width:30px;height:30px}
 .site.home .site-main .home-cta .home-cta--inner p i{margin-left:20px}
 .site.home .site-main .home-cta .home-cta--inner p a{color:#d6d6d6;text-decoration:none}
 .noshow{opacity:0;display:none}
+.woocommerce-product-gallery{border:1px dashed tomato}
 @media screen and (min-width:37.5em){.menu-toggle{display:none}
 .main-navigation ul{display:-webkit-box;display:-ms-flexbox;display:flex}
 }

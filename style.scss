@@ -770,10 +770,10 @@ textarea {
 	display: block;
 }
 
-.post,
-.page {
-	// margin: 0 0 1.5em;
-}
+// .post,
+// .page {
+// 	// margin: 0 0 1.5em;
+// }
 
 .updated:not(.published) {
 	display: none;
@@ -1052,6 +1052,8 @@ $nav_border: 1px solid $gray-dark;
 
 		.site-header__wrapper--inner {
 			max-height: $nav_height-max;
+
+			// background: blue;
 			
 			// border-bottom: 1px solid #ecf0f1;
 			position: relative;
@@ -1114,8 +1116,8 @@ $nav_border: 1px solid $gray-dark;
 			.site-search {
 				padding: 0 $logo_pad;
 
-				&.opt {
-				}
+				// &.opt {
+				// }
 				
 				height: $nav_height-max;
 				display: flex;
@@ -1254,4 +1256,9 @@ aside.widget-area {
 .noshow {
 	opacity: 0;
 	display: none;
+}
+
+
+.woocommerce-product-gallery {
+	border: 1px dashed tomato;
 }
