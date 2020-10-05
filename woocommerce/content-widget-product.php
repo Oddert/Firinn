@@ -25,6 +25,7 @@ if ( ! is_a( $product, 'WC_Product' ) ) {
 }
 
 ?>
+<div data-firinn='content-widget-product.php'></div>
 <li>
 	<?php do_action( 'woocommerce_widget_product_item_start', $args ); ?>
 

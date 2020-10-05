@@ -19,4 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+?>
+	<div data-firinn='taxonomy-product_tag.php'></div>
+<?php
+
 wc_get_template( 'archive-product.php' );

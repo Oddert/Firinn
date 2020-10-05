@@ -1,0 +1,96 @@
+/*!
+Theme Name: firinn
+Theme URI: http://underscores.me/
+Author: Robyn F H Veitch
+Author URI: http://robynveitch.com
+Description: A modern bookstore and sharing platform built with WooCommerce
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: firinn
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+firinn is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Generic
+# Base
+## Layouts
+# Components
+# plugins
+# Utilities
+
+--------------------------------------------------------------*/
+
+@mixin blur_background {
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.1);  
+}
+
+@mixin font_monst_priority {
+	font-family: 'montserrat', 'open sans', 'roboto', helvetica, 'poiret one', 'arial';
+}
+
+// h1, h2 {
+//   background: steelblue !important;
+// }
+
+.woocommerce-breadcrumb, .woocommerce-result-count {
+  display: none;
+}
+
+.woocommerce-products-header {
+  .woocommerce-products-header__title {
+    width: 50%;
+    margin: 1em 0 2.5em;
+    font-size: 42px;
+  }
+}
+
+ul.products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  // TODO: get global imports for these somehow
+  // TODO: change load order to preference these styles over WC. remove important flags
+  @include blur_background;
+  margin: 0 50px 150px !important;
+  padding: 3em 4em !important;
+  border-radius: 50px;
+  li.product.type-product {
+    margin: 0 0 80px 0;
+    // padding: 0;
+    float: none;
+    display: flex;
+    flex-direction: column;
+    a.woocommerce-loop-product__link {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      @include font_monst_priority;
+      text-decoration: none;
+      .attachment-woocommerce_thumbnail {
+        // height: 200px;
+        width: 150px;
+        object-fit: contain;
+      }
+      .woocommerce-loop-product__title {
+        margin: 0 0 0 20px;
+        font-size: 13px;
+        
+      }
+    }
+  }
+}

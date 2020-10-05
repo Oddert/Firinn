@@ -20,6 +20,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <?php do_action( 'woocommerce_widget_price_filter_start', $args ); ?>
 
+<div data-firinn='content-widget-price-filter.php'></div>
 <form method="get" action="<?php echo esc_url( $form_action ); ?>">
 	<div class="price_slider_wrapper">
 		<div class="price_slider" style="display:none;"></div>

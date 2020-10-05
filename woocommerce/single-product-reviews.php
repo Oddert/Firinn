@@ -24,6 +24,7 @@ if ( ! comments_open() ) {
 }
 
 ?>
+<div data-firinn='single-product-reviews.php'></div>
 <div id="reviews" class="woocommerce-Reviews">
 	<div id="comments">
 		<h2 class="woocommerce-Reviews-title">

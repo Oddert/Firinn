@@ -25,6 +25,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Global Vars & Mixins
+# Includes
 # Generic
 	- Normalize
 	- Box sizing
@@ -50,9 +52,16 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 --------------------------------------------------------------*/
 
+
+
+/*--------------------------------------------------------------
+# Global Vars & Mixins
+--------------------------------------------------------------*/
+
 $background-primary: #1A2934;
 $action: #81796D;
-// $white: #fff;
+$action-lighter: #b9b3ac;
+$white: #fff;
 $white-off: #ecf0f1;
 $gray-dark: #707070;
 $gray-light: #D6D6D6;
@@ -66,10 +75,29 @@ $gray-light: #D6D6D6;
 @mixin font_monst_priority {
 	font-family: 'montserrat', 'open sans', 'roboto', helvetica, 'poiret one', 'arial';
 }
+@mixin blur_background {
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.1);  
+}
+
+/*--------------------------------------------------------------
+# Includes
+--------------------------------------------------------------*/
+
+@import './books';
 
 /*--------------------------------------------------------------
 # Generic
 --------------------------------------------------------------*/
+
+[data-firinn] {
+	display: none;
+	width: 0px;
+	height: 0px;
+	opacity: 0;
+	pointer-events: none;
+}
 
 * {
 	color: $white-off;
@@ -653,7 +681,25 @@ textarea:focus {
 }
 
 select {
-	border: 1px solid #ccc;
+	// border: 1px solid #ccc;
+	border: none;
+	background: none;
+	border-bottom: 1px solid $action;
+	color: $action-lighter;
+	font-size: 20px;
+	padding: 10px;
+	margin: 0 0 40px;
+	transition: .2s ease;
+	&:hover, &:active, &:focus {
+		color: $gray-light;
+		border-color: $gray-light;
+	}
+}
+
+option {
+	color: $action;
+	background: $gray-light;
+	font-size: .7em;
 }
 
 textarea {
@@ -1016,7 +1062,7 @@ button {
 	border-radius: 25px;
 	height: 50px;
 	&:hover {
-		color: #fff;
+		color: $white;
 	}
 }
 
@@ -1046,6 +1092,7 @@ $nav_border: 1px solid $gray-dark;
 .site-header {
 	position: sticky;
 	top: 0;
+	z-index: 1;
 
 	.site-header__wrapper {
 		height: $nav_height-max;
@@ -1091,18 +1138,18 @@ $nav_border: 1px solid $gray-dark;
 					display: flex;
 				}
 				ul.nav-menu {
-					padding: 50px 0;
+					padding: 30px 0;
 					border-bottom: $nav_border;
 					display: flex;
 					flex-wrap: wrap;
 					justify-content: center;
 					li {
-						margin: 0 20px;
+						margin: 10px 20px;
 						a {
 							@include font_cinzen_priority;
 							color: $white-off;
 							&:hover {
-								color: #fff;
+								color: $white;
 							}
 						}
 						&.current-menu-item {
@@ -1110,9 +1157,9 @@ $nav_border: 1px solid $gray-dark;
 								content: "";
 								width: 6px;
 								height: 6px;
-								background: #fff;
+								background: $white;
 								position: absolute;
-								bottom: -10px;
+								bottom: -6px;
 								left: 50%;
 								border-radius: 50%;
 
@@ -1210,6 +1257,11 @@ aside.widget-area {
 	}
 }
 
+main.site-main {
+	margin-right: $primary_menu-sides;
+	margin-left: $primary_menu-sides;
+}
+
 .site.home {
 	// border: 1px dashed tomato;
 	// padding: 0 50px;
@@ -1245,9 +1297,7 @@ aside.widget-area {
 				// filter: blur(1px);
 				// opacity: .3;
 				// @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-					-webkit-backdrop-filter: blur(10px);
-					backdrop-filter: blur(10px);
-					background-color: rgba(255, 255, 255, 0.1);  
+					@include blur_background;
 				// }
 				p {
 					margin: 0;
@@ -1329,7 +1379,6 @@ aside.widget-area {
 		}
 	}
 }
-
 
 
 

@@ -24,6 +24,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
+<div data-firinn='content-product.php'></div>
 <li <?php wc_product_class( '', $product ); ?>>
 	<?php
 	/**

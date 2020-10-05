@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
+<div data-firinn='content-product_cat.php'></div>
 <li <?php wc_product_cat_class( '', $category ); ?>>
 	<?php
 	/**

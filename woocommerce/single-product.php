@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header( 'shop' ); ?>
-
+	<div data-firinn='single-product.php'></div>
 	<?php
 		/**
 		 * woocommerce_before_main_content hook.
