@@ -1032,7 +1032,7 @@ button {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	opacity: .3;
+	opacity: .45;
 	object-fit: cover;
 }
 
@@ -1059,17 +1059,20 @@ $nav_border: 1px solid $gray-dark;
 			position: relative;
 			display: flex;
 			align-items: center;
+			width: 100%;
 
 			display: grid;
 			grid-template-rows: 1fr;
 			grid-template-columns: $primary_menu-sides 1fr $primary_menu-sides;
 
+			
 			.site-branding {
 				height: 100%;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				padding: 0 $logo_pad;
+				// padding: 0;
 				width: $nav_side_icons;
 				.site-title {
 					display: none;
@@ -1080,13 +1083,19 @@ $nav_border: 1px solid $gray-dark;
 					object-fit: contain;
 				}
 			}
-
 			.main-navigation {
+				flex: 1;
 				display: flex;
 				justify-content: center;
-				ul {
+				.manu-navbar-container {
+					display: flex;
+				}
+				ul.nav-menu {
 					padding: 50px 0;
 					border-bottom: $nav_border;
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: center;
 					li {
 						margin: 0 20px;
 						a {
@@ -1115,6 +1124,9 @@ $nav_border: 1px solid $gray-dark;
 			}
 			.site-search {
 				padding: 0 $logo_pad;
+				// padding: 0;
+
+				width: $primary_menu-sides;
 
 				// &.opt {
 				// }
@@ -1122,7 +1134,7 @@ $nav_border: 1px solid $gray-dark;
 				height: $nav_height-max;
 				display: flex;
 				align-items: center;
-				border-left: $nav_border;
+				// border-left: $nav_border;
 
 
 				// width: $nav_side_icons;
@@ -1136,11 +1148,12 @@ $nav_border: 1px solid $gray-dark;
 					margin: 0;
 					text-align: center;
 					margin: auto;
-					max-height: 50px;
-					max-width: 50px;
+					height: 50px;
+					width: 50px;
 					padding: 10px;
 					img {
 						object-fit: contain;
+
 					}
 				}
 			}
@@ -1181,6 +1194,7 @@ aside.widget-area {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		flex-wrap: wrap;
 		justify-content: space-around;
 		.menu-item {
 			margin: 18px 0;
@@ -1189,9 +1203,9 @@ aside.widget-area {
 				width: $w;
 				height: $w;
 			}
-			.menu-image-title {
+			// .menu-image-title {
 
-			}
+			// }
 		}
 	}
 }
@@ -1258,7 +1272,72 @@ aside.widget-area {
 	display: none;
 }
 
+// * {
+// 	float: none !important;
+// }
 
-.woocommerce-product-gallery {
-	border: 1px dashed tomato;
+.product {
+	margin-right: $primary_menu-sides;
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	grid-auto-rows: auto;
+	
+	.woocommerce-product-gallery {
+		border: 1px dashed tomato;
+		justify-content: center;
+		// why in gods name
+		float: none;
+		.flex-viewport {
+			figure.woocommerce-product-gallery__wrapper {
+				margin: 0;
+			}
+		}
+	}
+	.entry-summary {
+		background: $background-primary;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		
+	}
+	.woocommerce-product-gallery__image {
+		display: flex !important;
+		justify-content: center;
+		border: 1px solid blue;
+	}
+	.flex-control-nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 }
+
+.single-product div.product .woocommerce-product-gallery {
+	li {
+		width: 50px !important;
+		img.flex-active {
+			position: relative;
+			&:after {
+				content: "";
+				width: 100px;
+				height: 100px;
+				background: #ecf0f1;
+				position: absolute;
+				bottom: -5px;
+				left: 50px;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+// @media only screen and (max-width: 1200px) {
+// 	.site-header .site-header__wrapper .site-header__wrapper--inner .site-branding {
+// 		padding: 0 auto;
+// 	}
+// }

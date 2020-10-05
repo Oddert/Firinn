@@ -44,20 +44,16 @@
 					
 					// $robynVeitch_description = get_bloginfo( 'description', 'display' );
 					// if ( $robynVeitch_description || is_customize_preview() ) :
-				?>
-				<!--<p class="site-description">
-					<?php //echo $robynVeitch_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</p>-->
-				<?php 
-					// endif; 
-				?>
+            //echo $robynVeitch_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+          ?>
+				
 
 				</div><!-- .site-branding -->
 
 				<nav id="site-navigation" class="main-navigation">
 					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 						<i class='fa fa-chevron-left'></i>
-						<i class='fa fa-chevron-right'></i>
+						<!-- <i class='fa fa-chevron-right'></i> -->
 					</button>
 					<?php
 						wp_nav_menu(
