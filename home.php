@@ -62,7 +62,7 @@
 		<div class='intro'>
 			<h1>
 				<?php #echo the_title(); ?>
-				Bespoke reading tailored to you
+				Bespoke reading lists, tailored for you
 			</h1>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
