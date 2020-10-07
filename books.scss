@@ -54,7 +54,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 .woocommerce-products-header {
   .woocommerce-products-header__title {
-    width: 50%;
+    width: 60%;
     margin: 1em 0 2.5em;
     font-size: 42px;
   }
@@ -76,20 +76,28 @@ ul.products {
     float: none;
     display: flex;
     flex-direction: column;
+    align-items: center;
     a.woocommerce-loop-product__link {
       display: grid;
       grid-template-columns: 1fr 1fr;
       @include font_monst_priority;
       text-decoration: none;
+      justify-items: center;
+      .onsale {
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+      }
       .attachment-woocommerce_thumbnail {
         // height: 200px;
-        width: 150px;
+        width: 100px;
         object-fit: contain;
       }
       .woocommerce-loop-product__title {
         margin: 0 0 0 20px;
         font-size: 13px;
-        
+        align-self: center;
       }
     }
   }

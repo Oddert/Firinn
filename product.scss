@@ -1,0 +1,141 @@
+/*!
+Theme Name: firinn
+Theme URI: http://underscores.me/
+Author: Robyn F H Veitch
+Author URI: http://robynveitch.com
+Description: A modern bookstore and sharing platform built with WooCommerce
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: firinn
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+firinn is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Generic
+# Base
+## Layouts
+# Components
+# plugins
+# Utilities
+
+--------------------------------------------------------------*/
+
+
+$background-primary: #1A2934;
+$action: #81796D;
+$action-lighter: #b9b3ac;
+$white: #fff;
+$white-off: #ecf0f1;
+$gray-dark: #707070;
+$gray-light: #D6D6D6;
+
+
+$nav_height-max: 200px;
+$logo_pad: 75px;
+$nav_side_icons: auto;
+$primary_menu-sides: 200px;
+
+$nav_border: 1px solid $gray-dark;
+
+
+@mixin font_cinzen_priority {
+	font-family: 'cinzel', 'rufina', 'montserrat', 'poiret one', 'roboto', helvetica, 'open sans', 'arial';
+}
+@mixin font_rafi_priority {
+	font-family: 'rufina', 'cinzel', 'montserrat', 'poiret one', 'roboto', helvetica, 'open sans', 'arial';
+}
+@mixin font_monst_priority {
+	font-family: 'montserrat', 'open sans', 'roboto', helvetica, 'poiret one', 'arial';
+}
+@mixin blur_background {
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	background-color: rgba(255, 255, 255, 0.1);  
+}
+
+
+.product {
+	margin-right: $primary_menu-sides;
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	grid-auto-rows: auto;
+	
+	.woocommerce-product-gallery {
+    // border: 1px dashed tomato;
+    grid-column: 1;
+		justify-content: center;
+		// why in gods name
+		float: none;
+		.flex-viewport {
+			figure.woocommerce-product-gallery__wrapper {
+				margin: 0;
+			}
+    }
+    .woocommerce-product-gallery__image {
+      display: flex !important;
+      justify-content: center;
+      // border: 1px solid blue;
+    }
+	}
+  
+  .entry-summary {
+		background: $background-primary;
+		margin: 0;
+		display: flex;
+		flex-direction: column;	
+    grid-column: 2;
+    padding: 50px 100px;
+    form.cart {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  
+  .woocommerce-tabs {
+    background: $background-primary;
+    grid-column: 2;
+  }
+
+  .related.products {
+    grid-column: 1 / -1;
+  }
+
+	
+	.flex-control-nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+
+.single-product div.product .woocommerce-product-gallery {
+	li {
+		width: 50px !important;
+		img.flex-active {
+			position: relative;
+			&:after {
+				content: "";
+				width: 100px;
+				height: 100px;
+				background: #ecf0f1;
+				position: absolute;
+				bottom: -5px;
+				left: 50px;
+			}
+		}
+	}
+}

@@ -187,3 +187,27 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+
+/**
+ * WooCommerce Hooks
+ */
+
+ 
+remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+
+function firinn_shop_loop_item_title ( $tabs ) {
+	global $product;
+	$author = $product->get_attribute( 'author' );
+
+	echo '<div class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">'
+		.'<h2>' 
+			. get_the_title() 
+		. '</h2>'
+		. '<p>'
+			. $author
+		. '</p>' 
+	. '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+}
+
+add_action( 'woocommerce_shop_loop_item_title', 'firinn_shop_loop_item_title', 10 );
