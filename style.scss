@@ -1340,3 +1340,15 @@ main.site-main {
 // 		padding: 0 auto;
 // 	}
 // }
+
+.star-rating {
+
+	span {
+		font-family: star !important;
+		color: $action !important;
+		&:before {
+			font-family: star !important;
+			color: $action !important;
+		}
+}
+}

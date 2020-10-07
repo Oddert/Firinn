@@ -72,8 +72,8 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
-*/.product{margin-right:200px;display:grid;grid-template-columns:2fr 3fr;grid-auto-rows:auto}
-.product .woocommerce-product-gallery{grid-column:1;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;float:none}
+*/.product{margin-right:200px;display:grid;grid-template-columns:2fr 4fr;grid-template-rows:auto auto;grid-auto-rows:auto}
+.product .woocommerce-product-gallery{grid-column:1;grid-row:1 / -1;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;float:none}
 .product .woocommerce-product-gallery .flex-viewport figure.woocommerce-product-gallery__wrapper{margin:0}
 .product .woocommerce-product-gallery .woocommerce-product-gallery__image{display:-webkit-box !important;display:-ms-flexbox !important;display:flex !important;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
 .product .entry-summary{background:#1a2934;margin:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;grid-column:2;padding:50px 100px}
@@ -81,6 +81,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .product .woocommerce-tabs{background:#1a2934;grid-column:2}
 .product .related.products{grid-column:1 / -1}
 .product .flex-control-nav{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}
+.product .add_to_cart{background:#81796d;color:#ecf0f1;font-family:'cinzel','rufina','montserrat','poiret one','roboto',helvetica,'open sans','arial';border:0;padding:10px 60px;cursor:pointer;border-radius:25px;height:50px}
+.product .add_to_cart:hover{color:#fff}
 .single-product div.product .woocommerce-product-gallery li{width:50px !important}
 .single-product div.product .woocommerce-product-gallery li img.flex-active{position:relative}
 .single-product div.product .woocommerce-product-gallery li img.flex-active:after{content:"";width:100px;height:100px;background:#ecf0f1;position:absolute;bottom:-5px;left:50px}
@@ -246,6 +248,8 @@ main.site-main{margin-right:200px;margin-left:200px}
 .site.home .site-main .home-cta .home-cta--inner p i{margin-left:20px}
 .site.home .site-main .home-cta .home-cta--inner p a{color:#d6d6d6;text-decoration:none}
 .noshow{opacity:0;display:none}
+.star-rating span{font-family:star !important;color:#81796d !important}
+.star-rating span:before{font-family:star !important;color:#81796d !important}
 @media screen and (min-width:37.5em){.menu-toggle{display:none}
 .main-navigation ul{display:-webkit-box;display:-ms-flexbox;display:flex}
 }

@@ -71,12 +71,13 @@ $nav_border: 1px solid $gray-dark;
 .product {
 	margin-right: $primary_menu-sides;
 	display: grid;
-	grid-template-columns: 2fr 3fr;
+	grid-template-columns: 2fr 4fr;
+	grid-template-rows: auto auto;
 	grid-auto-rows: auto;
-	
 	.woocommerce-product-gallery {
     // border: 1px dashed tomato;
     grid-column: 1;
+    grid-row: 1 / -1;
 		justify-content: center;
 		// why in gods name
 		float: none;
@@ -119,7 +120,21 @@ $nav_border: 1px solid $gray-dark;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-	}
+  }
+  
+  .add_to_cart {
+    background: $action;
+    color: $white-off;
+    @include font_cinzen_priority;
+    border: none;
+    padding: 10px 60px;
+    cursor: pointer;
+    border-radius: 25px;
+    height: 50px;
+    &:hover {
+      color: $white;
+    }
+  }
 }
 
 .single-product div.product .woocommerce-product-gallery {

@@ -195,6 +195,8 @@ if ( class_exists( 'WooCommerce' ) ) {
 
  
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+// add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 
 function firinn_shop_loop_item_title ( $tabs ) {
 	global $product;
