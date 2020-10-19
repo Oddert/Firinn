@@ -36,12 +36,15 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 
 $background-primary: #1A2934;
+$background-primary--fadded: rgba(26, 41, 52, .9);
 $action: #81796D;
 $action-lighter: #b9b3ac;
 $white: #fff;
 $white-off: #ecf0f1;
 $gray-dark: #707070;
 $gray-light: #D6D6D6;
+$gray-light--lighter: #DEDEDE;
+$gray-light--darker: #D2D2D2;
 
 
 $nav_height-max: 200px;
@@ -66,10 +69,39 @@ $nav_border: 1px solid $gray-dark;
 	backdrop-filter: blur(10px);
 	background-color: rgba(255, 255, 255, 0.1);  
 }
+@mixin select_style {
+	// border: 1px solid #ccc;
+	border: none;
+	background: none;
+	border-bottom: 1px solid $action;
+	color: $action-lighter;
+	font-size: 20px;
+	padding: 10px;
+	margin: 0 0 40px;
+	transition: .2s ease;
+	&:hover, &:active, &:focus {
+		color: $gray-light;
+		border-color: $gray-light;
+	}
+}
+@mixin default_button {
+	background: $action;
+	color: $white-off;
+	@include font_cinzen_priority;
+	border: none;
+	padding: 10px 60px;
+	cursor: pointer;
+	border-radius: 25px;
+	height: 50px;
+	&:hover {
+		color: $white;
+	}
+}
 
 
 .product {
-	margin-right: $primary_menu-sides;
+	width: auto !important;
+	// margin-right: $primary_menu-sides;
 	display: grid;
 	grid-template-columns: 2fr 4fr;
 	grid-template-rows: auto auto;
@@ -81,35 +113,254 @@ $nav_border: 1px solid $gray-dark;
 		justify-content: center;
 		// why in gods name
 		float: none;
+		transform: translate(40px, 20px);
 		.flex-viewport {
 			figure.woocommerce-product-gallery__wrapper {
 				margin: 0;
 			}
-    }
+		}
+		.flex-control-nav {
+			li {
+				margin: 0 10px;
+				position: relative;
+				img.flex-active {
+					
+				}
+				&:after {
+					content: "";
+					width: 6px;
+					height: 6px;
+					background: $white;
+					position: absolute;
+					bottom: 0px;
+					left: 50%;
+					border-radius: 50%;
+					transform: translateX(-50%);
+				}
+			}
+		}
     .woocommerce-product-gallery__image {
       display: flex !important;
-      justify-content: center;
+			justify-content: center;
+			img {
+				box-shadow: 0 15px 20px rgba(0,0,0,.2);
+			}
       // border: 1px solid blue;
     }
 	}
   
   .entry-summary {
-		background: $background-primary;
+		background: $background-primary--fadded;//$background-primary;
 		margin: 0;
 		display: flex;
 		flex-direction: column;	
+		align-items: flex-end;
     grid-column: 2;
-    padding: 50px 100px;
+		padding: 50px 100px;
+		.product_title {
+			font-size: 42px;
+		}
+		.product_author {
+			// color: red;
+			font-size: 18px;
+		}
+		.woocommerce-product-details__short-description {
+			$b: 1px solid #ecf0f1;
+			border-top: $b;
+			border-bottom: $b;
+			margin: 50px 0;
+			p {
+				text-align: center;
+				font-style: italic;
+				padding: 20px;
+			}
+		}
+		.price {
+			color: $gray-light;
+		}
+		.stock {
+			color: $gray-light;
+		}
     form.cart {
-      display: flex;
-      justify-content: space-around;
+      // display: flex;
+			// justify-content: space-between;
+			// align-items: center;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			width: 100%;
+			margin: 20px 0 80px;
+			align-items: flex-end;
+			.quantity {
+				grid-column: 2;
+				input.input-text {
+					@include select_style;
+					text-align: center;
+					margin: 0;
+					padding: 0;
+				}
+			}
+			button {
+				padding: 5px 20px;
+				grid-column: 3;
+			}
+			.single_variation_wrap {
+				grid-column: 2 / span 3;
+				.variations_button {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					align-items: flex-end;
+				}
+			}
+			table.variations {
+				margin: 0;
+				tbody tr {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					align-items: flex-start;
+					.label {
+						opacity: 0;
+					}
+					.value {
+						select {
+							margin: 0;
+						}
+						.reset_variations {
+							display: none;
+						}
+					}
+				}
+			}
     }
   }
   
   .woocommerce-tabs {
-    background: $background-primary;
-    grid-column: 2;
+    background: $background-primary--fadded;
+		grid-column: 2;
+		.wc-tabs {
+			display: none;
+		}
+		.woocommerce-Tabs-panel {
+			display: flex !important;
+			flex-direction: column;
+			padding: 0 6em;
+			h2 {
+				order: 2;
+				@include font_cinzen_priority;
+				font-size: 20px;
+				letter-spacing: 1px;
+				&:first-of-type {
+					margin-top: 4em;
+					margin-bottom: 2em;
+				}
+			}
+			p {
+				order: 3;
+				padding: 0 3em;
+			}
+			.woocommerce-product-attributes {
+				order: 2;
+			}
+			.wpulike {
+				order: 1;
+			}
+			// &--additional_information {
+			// 	display: none !important;
+			// }
+			.woocommerce-Reviews {
+				.commentlist {
+					list-style: none;
+					.review {
+						.comment_container {
+							display: flex;
+							align-items: flex-start;
+							// img {}
+							.comment-text {
+								padding: 0 80px;
+								.meta {
+									padding: 0;
+									display: flex;
+									flex-direction: column;
+								}
+								.description p {
+									padding: 0;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
   }
+	
+#review_form_wrapper {
+	$padd: 40px;
+	background: $gray-light;
+	padding: 80px 20px;
+	margin: 150px 0 150px 0;
+	box-shadow: 0 20px 20px rgba(0,0,0,.1);
+	& * {
+		color: $gray-dark;
+	}
+	.comment-reply-title {
+		font-size: 26px;
+		padding: 0px 40px;
+		margin: 30px 0;
+	}
+	.comment-form {
+		margin-top: 40px;
+	}
+	textarea, input[type=text], input[type=email] {
+		$br: 3px;
+		border-radius: 0;
+		border: none;
+		background: $gray-light--lighter;
+		border-bottom: $br solid $gray-light--lighter;
+		transition: .1s linear;
+		min-width: 50%;
+		padding: 10px 20px;
+		&:hover {
+			border-bottom: $br solid $gray-light--darker;
+		}
+		&:focus {
+			border-bottom: $br solid $gray-dark;
+		}
+	}
+	.comment-form-rating {
+		padding-left: $padd;
+		padding-right: $padd;
+		.stars {
+			padding: 0 $padd;
+		}
+	}
+	.comment-form-comment {
+		padding: 0 $padd;
+	}
+	.comment-form-author {
+		padding: 0 $padd;
+	}
+	.comment-form-email {
+		padding: 0 $padd;
+	}
+	.comment-form-cookies-consent {
+		padding: 0 $padd;
+		margin: 50px 0;
+	}
+	.form-submit {
+		padding: 0 $padd;
+		display: flex;
+		justify-content: flex-end;
+		input[type=submit] {
+			@include default_button;
+		}
+	}
+	p.stars {
+		margin-bottom: 0;
+		a {
+			margin: 0;
+		}
+	}
+}
 
   .related.products {
     grid-column: 1 / -1;
@@ -135,6 +386,13 @@ $nav_border: 1px solid $gray-dark;
       color: $white;
     }
   }
+}
+
+.wpulike {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
 }
 
 .single-product div.product .woocommerce-product-gallery {

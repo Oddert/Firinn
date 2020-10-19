@@ -30,15 +30,21 @@ if ( '0' === $comment->comment_approved ) { ?>
 
 <?php } else { ?>
 
-	<p class="meta">
-		<strong class="woocommerce-review__author"><?php comment_author(); ?> </strong>
-		<?php
-		if ( 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && $verified ) {
-			echo '<em class="woocommerce-review__verified verified">(' . esc_attr__( 'verified owner', 'woocommerce' ) . ')</em> ';
-		}
+ 	<?php $show_verified = 'yes' === get_option( 'woocommerce_review_rating_verification_label' ) && $verified; ?>
 
-		?>
-		<span class="woocommerce-review__dash">&ndash;</span> <time class="woocommerce-review__published-date" datetime="<?php echo esc_attr( get_comment_date( 'c' ) ); ?>"><?php echo esc_html( get_comment_date( wc_date_format() ) ); ?></time>
+	<p class="meta">
+		<span>
+			<strong class="woocommerce-review__author" title="<?php echo $show_verified ? 'verified owner' : '' ?>"><?php comment_author(); ?> </strong>
+			<?php
+				if ( $show_verified ) {
+					echo '<i class="fa fa-check-circle woocommerce-review__verified verified" title="why no title"></i>';
+				}	
+			?>
+		</span>
+		<!-- <span class="woocommerce-review__dash">&ndash;</span>  -->
+		<time class="woocommerce-review__published-date" datetime="<?php echo esc_attr( get_comment_date( 'c' ) ); ?>">
+			<?php echo esc_html( get_comment_date( 'j / n / Y'/*wc_date_format()*/ ) ); ?>
+		</time>
 	</p>
 
 	<?php

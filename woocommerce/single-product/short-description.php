@@ -28,6 +28,7 @@ if ( ! $short_description ) {
 }
 
 ?>
+<div data-firinn="single-product/short-description.php"></div>
 <div class="woocommerce-product-details__short-description">
 	<?php echo $short_description; // WPCS: XSS ok. ?>
 </div>

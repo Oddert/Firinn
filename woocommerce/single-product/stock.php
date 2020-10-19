@@ -20,4 +20,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
+<div data-firinn="single-product/stock.php"></div>
 <p class="stock <?php echo esc_attr( $class ); ?>"><?php echo wp_kses_post( $availability ); ?></p>

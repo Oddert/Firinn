@@ -89,6 +89,34 @@ $nav_border: 1px solid $gray-dark;
 	backdrop-filter: blur(10px);
 	background-color: rgba(255, 255, 255, 0.1);  
 }
+@mixin select_style {
+	// border: 1px solid #ccc;
+	border: none;
+	background: none;
+	border-bottom: 1px solid $action;
+	color: $action-lighter;
+	font-size: 20px;
+	padding: 10px;
+	margin: 0 0 40px;
+	transition: .2s ease;
+	&:hover, &:active, &:focus {
+		color: $gray-light;
+		border-color: $gray-light;
+	}
+}
+@mixin default_button {
+	background: $action;
+	color: $white-off;
+	@include font_cinzen_priority;
+	border: none;
+	padding: 10px 60px;
+	cursor: pointer;
+	border-radius: 25px;
+	height: 50px;
+	&:hover {
+		color: $white;
+	}
+}
 
 /*--------------------------------------------------------------
 # Includes
@@ -114,6 +142,136 @@ $nav_border: 1px solid $gray-dark;
 	@include font_monst_priority;
 	box-sizing: border-box;
 }
+
+.required {
+	color: $action-lighter;
+	margin: 0 5px;
+	font-weight: bolder;
+
+}
+
+// .checkmark__conatiner {
+// 	.checkmark {
+// 		$r: 20px;
+// 		width: $r;
+// 		height: $r;
+// 		background: $gray-light;
+// 		border: 1px solid $gray-dark;
+// 		display: inline-block;
+// 		cursor: pointer;
+// 		&:after {
+// 			content: "";
+// 			position: absolute;
+// 			display: none;
+// 		}
+// 	}
+// 	input[type=radio] {
+// 		position: absolute;
+// 		opacity: 0;
+// 		cursor: pointer;
+// 		height: 0;
+// 		width: 0;
+// 	}
+// 	&:hover input ~ .checkmark {
+// 		background: #ccc;
+// 	}
+// 	input[type=radio]:checked ~ .checkmark {
+// 		background: #2196F3;
+// 	}
+// 	.checkmark:after {
+// 		left: 9px;
+// 		top: 5px;
+// 		width: 5px;
+// 		height: 10px;
+// 		border: solid white;
+// 		border-width: 0 3px 3px 0;
+// 		-webkit-transform: rotate(45deg);
+// 		-ms-transform: rotate(45deg);
+// 		transform: rotate(45deg);
+// 		display: none;
+// 	}
+// 	input[type=radio]:checked ~ .checkmark:after {
+// 		display: block;
+// 	}
+// }
+
+
+
+/* Customize the label (the container) */
+.checkbox_container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  // font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+	user-select: none;
+	transition: .1s linear;
+	display: flex;
+	align-items: center;
+	height: 25px;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox_container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+	transition: .1s linear;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background: #eee;
+	transition: .1s linear;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox_container:hover input ~ .checkmark {
+  background: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+// .checkbox_container input:checked ~ .checkmark {
+//   background-color: #2196F3;
+// }
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+	transition: .1s linear;
+}
+
+/* Show the checkmark when checked */
+.checkbox_container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox_container .checkmark:after {
+  left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+  width: 50%;
+  height: 50%;
+	border: none;
+	background: $gray-dark;
+}
+
+
 
 /* Normalize
 --------------------------------------------- */
@@ -691,18 +849,30 @@ textarea:focus {
 }
 
 select {
-	// border: 1px solid #ccc;
+	@include select_style;
+}
+
+a {
+	@include select_style;
+	
+	// background: none;
+	// color: $action-lighter;
+	// transition: .2s ease;
+	color: $gray-light;
 	border: none;
-	background: none;
-	border-bottom: 1px solid $action;
-	color: $action-lighter;
-	font-size: 20px;
-	padding: 10px;
-	margin: 0 0 40px;
-	transition: .2s ease;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	text-decoration: none;
+	&:visited {
+		color: $action-lighter;
+	}
 	&:hover, &:active, &:focus {
-		color: $gray-light;
-		border-color: $gray-light;
+		color: $white;
+		border-color: $white;
+	}
+	&:active {
+		color: $gray-dark;
 	}
 }
 
@@ -1062,18 +1232,8 @@ p {
 	font-size: 14px;
 }
 
-button {
-	background: $action;
-	color: $white-off;
-	@include font_cinzen_priority;
-	border: none;
-	padding: 10px 60px;
-	cursor: pointer;
-	border-radius: 25px;
-	height: 50px;
-	&:hover {
-		color: $white;
-	}
+button, input[type=button], input[type=submit] {
+	@include default_button;
 }
 
 .background-image {
@@ -1162,7 +1322,7 @@ button {
 								height: 6px;
 								background: $white;
 								position: absolute;
-								bottom: -6px;
+								bottom: 30px;
 								left: 50%;
 								border-radius: 50%;
 
@@ -1329,9 +1489,25 @@ main.site-main {
 // 	float: none !important;
 // }
 
+.woocommerce-product-rating {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
 
 
-
+.star-rating {
+	margin: 0;
+	span {
+		font-family: star !important;
+		color: $action !important;
+		&:before {
+			content: "\005";
+			font-family: star !important;
+			color: $action !important;
+		}
+	}
+}
 
 
 
@@ -1341,14 +1517,65 @@ main.site-main {
 // 	}
 // }
 
-.star-rating {
-
-	span {
-		font-family: star !important;
-		color: $action !important;
-		&:before {
-			font-family: star !important;
-			color: $action !important;
-		}
+@media screen and (min-width: 48em) {
+	ul.products.columns-4 li.product {
+		width: auto !important;
+	}
 }
+
+@media only screen and (max-width: 1450px) {
+	ul.products {
+		grid-template-columns: repeat(3, 1fr);
+		padding: 2em 3em !important;
+		margin: 0 25px 150px !important;
+	}
+}
+
+
+@media only screen and (max-width: 1300px) {
+	$primary_menu-sides: 100px;
+	.site-header {
+		.site-header__wrapper {
+			.site-header__wrapper--inner {
+				grid-template-columns: $primary_menu-sides 1fr $primary_menu-sides;
+				.site-search {
+					width: $primary_menu-sides;
+				}
+			}
+		}
+	}
+	aside.widget-area {
+		width: $primary_menu-sides;
+	}
+	main.site-main {
+		margin-right: $primary_menu-sides;
+		margin-left: $primary_menu-sides;
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+
+}
+
+@media only screen and (max-width: 950px) {
+	ul.products {
+		grid-template-columns: repeat(2, 1fr);
+		// padding: 2em 3em !important;
+		// margin: 0 25px 150px !important;
+	}
+}
+
+@media only screen and (max-width: 786px) {
+	ul.products {
+		li.product.type-product {
+			a.woocommerce-loop-product__link {
+				grid-template-columns: 1fr;
+				.woocommerce-loop-product__title {
+					margin: 0;
+					padding: 0 10px;
+					text-align: center;
+				}
+			}
+		}
+	}
 }

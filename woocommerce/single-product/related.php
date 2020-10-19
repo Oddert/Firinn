@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( $related_products ) : ?>
-
+	<div data-firinn="single-product/related.php"></div>
 	<section class="related products">
 
 		<?php

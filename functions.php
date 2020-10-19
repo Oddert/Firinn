@@ -190,12 +190,14 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 
 /**
- * WooCommerce Hooks
+ * WooCommerce Hook Overrides
  */
 
  
+
+
 remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
-remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
+// remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
 // add_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
 
 function firinn_shop_loop_item_title ( $tabs ) {
@@ -213,3 +215,80 @@ function firinn_shop_loop_item_title ( $tabs ) {
 }
 
 add_action( 'woocommerce_shop_loop_item_title', 'firinn_shop_loop_item_title', 10 );
+
+
+
+/**
+ * Product Summary Box.
+ *
+ * @see woocommerce_template_single_title()
+ * @see woocommerce_template_single_rating()
+ * @see woocommerce_template_single_price()
+ * @see woocommerce_template_single_excerpt()
+ * @see woocommerce_template_single_meta()
+ * @see woocommerce_template_single_sharing()
+ * 
+ */
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+add_action( 'woocommerce_single_product_summary', 'firinn_template_single_author', 10 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 10 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+
+function firinn_template_single_author () {
+	if ( ! defined('ABSPATH' ) ) {
+		exit;
+	}
+	global $product;
+	$author = $product->get_attribute( 'author' );
+	echo '<p class="product_author">' . $author . '</p>';
+}
+
+
+function firinn_custom_comment_fields( $fields ) {
+	$commenter = wp_get_current_commenter();
+
+	$required = get_option( 'require_name_email' );
+	$aria_req = $required ? ' aria-required="true"' : '';
+
+	// unset($fields['email']);
+	
+	$fields['author'] = '<p class="comment-form-author" data-oddert="hellow from functions php this is author">'
+		.'<label for="author" class="screen-reader-text">' . __( 'author' ) . '</label>'
+		.'<input id="author" name="author" type="text" value="' .  esc_attr( $commenter[ 'comment_author' ] ) . '" placeholder="Your Name"' . $aria_req . ' />'
+		.( $required ? '<span class="required" title="required">*</span>' : '' )
+	.'</p>';
+
+	$fields['email'] = '<p class="comment-form-email" data-oddert="hellow from functions php this is email">'
+		.'<label for="email" class="screen-reader-text">' . __( 'Email' ) . '</label>'
+		.'<input id="email" name="email" type="email" value="' .  esc_attr( $commenter[ 'comment_author_email' ] ) . '" placeholder="Your email"' . $aria_req . ' />'
+		.( $required ? '<span class="required" title="required">*</span>' : '' )
+	.'</p>';
+
+	// $fields['cookies'] = '<p class="comment-form-cookies-consent">'
+	// 	.'<label for="wp-comment-cookies-consent checkmark__conatiner">'
+	// 		.'Save my name, email, and website in this browser for the next time I comment.'
+	// 		.'<input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> '
+	// 		.'<span class="checkmark"></span>'
+	// 	.'</label>'
+	// .'</p>';
+	$fields['cookies'] = '<p class="comment-form-cookies-consent"><label class="checkbox_container">
+	Save my name, email, and website in this browser for the next time I comment.
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label></p>';
+
+	return $fields;
+}
+
+add_filter( 'comment_form_fields', 'firinn_custom_comment_fields' );
